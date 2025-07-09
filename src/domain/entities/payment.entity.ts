@@ -1,6 +1,9 @@
+import { PaymentStatus } from "../enums/PaymentStatus.enum";
+import IOrder from "./order.entity";
+
 export interface IPayment {
   id: number;
-  status: string;
+  status: PaymentStatus;
   method: string;
   amount: number;
   providerId?: string;
@@ -8,6 +11,8 @@ export interface IPayment {
   currency: string;
   createdAt: Date;
   orderId?: number;
+
+  order?: IOrder;
 }
 
 export default IPayment;

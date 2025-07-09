@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import IProductVariant from "@/domain/entities/productvariant.entity";
+import IProductVariant from "@/domain/entities/productVariant.entity";
 import { ProductVariantState } from "../types/state.types";
 
 const initialState: ProductVariantState = {

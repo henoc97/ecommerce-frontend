@@ -1,3 +1,5 @@
+import IProductVariant from "./productVariant.entity";
+
 export interface IOrderItem {
   id: number;
   orderId: number;
@@ -6,6 +8,8 @@ export interface IOrderItem {
   price: number;
   createdAt: Date;
   updatedAt: Date;
+
+  productVariant?: IProductVariant;
 }
 
 export default IOrderItem;

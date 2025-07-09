@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import INewsletterSubscription from "@/domain/entities/newslettersubscription.entity";
+import INewsletterSubscription from "@/domain/entities/newsletterSubscription.entity";
 import { NewsletterSubscriptionState } from "../types/state.types";
 
 const initialState: NewsletterSubscriptionState = {

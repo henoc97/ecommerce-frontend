@@ -5,7 +5,7 @@ import { AddressState } from "../types/state.types";
 const initialState: AddressState = {
   loading: false,
   error: null,
-  addresss: [],
+  addresses: [],
 };
 
 const addressSlice = createSlice({
@@ -18,22 +18,22 @@ const addressSlice = createSlice({
     },
     fetchAddresssSuccess(state, action: PayloadAction<IAddress[]>) {
       state.loading = false;
-      state.addresss = action.payload;
+      state.addresses = action.payload;
     },
     fetchAddresssFailure(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
     },
     addAddress(state, action: PayloadAction<IAddress>) {
-      state.addresss.push(action.payload);
+      state.addresses.push(action.payload);
     },
     deleteAddress(state, action: PayloadAction<number>) {
-      state.addresss = state.addresss.filter((address) => address.id !== action.payload);
+      state.addresses = state.addresses.filter((address) => address.id !== action.payload);
     },
     updateAddress(state, action: PayloadAction<IAddress>) {
-      const index = state.addresss.findIndex((address) => address.id === action.payload.id);
+      const index = state.addresses.findIndex((address) => address.id === action.payload.id);
       if (index !== -1) {
-        state.addresss[index] = action.payload;
+        state.addresses[index] = action.payload;
       }
     },
   },

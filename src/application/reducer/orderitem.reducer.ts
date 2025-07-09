@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import IOrderItem from "@/domain/entities/orderitem.entity";
+import IOrderItem from "@/domain/entities/orderItem.entity";
 import { OrderItemState } from "../types/state.types";
 
 const initialState: OrderItemState = {

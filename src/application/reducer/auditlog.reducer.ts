@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import IAuditLog from "@/domain/entities/auditlog.entity";
+import IAuditLog from "@/domain/entities/auditLog.entity";
 import { AuditLogState } from "../types/state.types";
 
 const initialState: AuditLogState = {

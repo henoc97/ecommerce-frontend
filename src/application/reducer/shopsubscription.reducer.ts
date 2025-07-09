@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import IShopSubscription from "@/domain/entities/shopsubscription.entity";
+import IShopSubscription from "@/domain/entities/shopSubscription.entity";
 import { ShopSubscriptionState } from "../types/state.types";
 
 const initialState: ShopSubscriptionState = {
   loading: false,
   error: null,
-  shopsubscriptions: [],
+  shopSubscriptions?: [],
 };
 
 const shopsubscriptionSlice = createSlice({

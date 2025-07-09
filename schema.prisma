@@ -180,7 +180,7 @@ model Product {
   category           Category         @relation(fields: [categoryId], references: [id])
   shopId             Int
   shop               Shop             @relation(fields: [shopId], references: [id])
-  productVariants     ProductVariant[]
+  productVariants    ProductVariant[]
 }
 
 // Product Variant Model: For product options like size, color
@@ -194,10 +194,10 @@ model ProductVariant {
   stock        Int           @default(0) // Stock for this variant
   price        Float // Price for this variant, can be different from the base product price
   currency     Currency
-  productImage ProductImage[] // Images specific to this variant
+  productImages ProductImage[] // Images specific to this variant
   promotions   Promotion[] // Promotions applicable to this variant
-  cartItem     CartItem[]
-  orderItem    OrderItem[]
+  cartItems     CartItem[]
+  orderItems    OrderItem[]
   reviews      Review[]
 }
 
@@ -307,11 +307,12 @@ model Review {
 // Newsletter Model: For email marketing subscriptions
 model NewsletterSubscription {
   id           Int      @id @default(autoincrement())
-  email        String   @unique
+  email        String   
   subscribedAt DateTime @default(now())
   isActive     Boolean  @default(true) // Indicates if the subscription is active
   shop         Shop     @relation(fields: [shopId], references: [id])
   shopId       Int // Foreign key to reference the Shop
+  @@unique([email, shopId]) // Ensure unique email per shop
 }
 
 // Notification Model: For push notifications and email updates
@@ -372,7 +373,7 @@ model Refund {
   id        Int          @id @default(autoincrement())
   orderId   Int?
   order     Order?
-  reason    String // refunf reason
+  reason    String? // refund reason
   amount    Float
   status    RefundStatus // e.g., PENDING, APPROVED, REJECTED
   createdAt DateTime     @default(now())
@@ -404,7 +405,7 @@ model AuditLog {
   userId    Int
   user      User           @relation(fields: [userId], references: [id])
   action    AuditLogAction // e.g., CREATED, UPDATED, DELETED
-  entity    String // Entité concernée, par exemple "Product", "Order"
+  entity    String         // Entity concerned, e.g., "Product", "Order"
   entityId  Int
   changes   Json
   updatedAt DateTime       @updatedAt

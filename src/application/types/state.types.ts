@@ -1,33 +1,33 @@
 import IAddress from "@/domain/entities/address.entity";
-import IAuditLog from "@/domain/entities/auditlog.entity";
+import IAuditLog from "@/domain/entities/auditLog.entity";
 import ICart from "@/domain/entities/cart.entity";
-import ICartItem from "@/domain/entities/cartitem.entity";
+import ICartItem from "@/domain/entities/cartItem.entity";
 import ICategory from "@/domain/entities/category.entity";
-import INewsletterSubscription from "@/domain/entities/newslettersubscription.entity";
+import INewsletterSubscription from "@/domain/entities/newsletterSubscription.entity";
 import INotification from "@/domain/entities/notification.entity";
 import IOrder from "@/domain/entities/order.entity";
-import IOrderItem from "@/domain/entities/orderitem.entity";
+import IOrderItem from "@/domain/entities/orderItem.entity";
 import IPayment from "@/domain/entities/payment.entity";
 import IProduct from "@/domain/entities/product.entity";
-import IProductImage from "@/domain/entities/productimage.entity";
-import IProductVariant from "@/domain/entities/productvariant.entity";
+import IProductImage from "@/domain/entities/productImage.entity";
+import IProductVariant from "@/domain/entities/productVariant.entity";
 import IPromotion from "@/domain/entities/promotion.entity";
 import IRefund from "@/domain/entities/refund.entity";
 import IReview from "@/domain/entities/review.entity";
 import IShop from "@/domain/entities/shop.entity";
-import IShopSubscription from "@/domain/entities/shopsubscription.entity";
+import IShopSubscription from "@/domain/entities/shopSubscription.entity";
 import ISubscription from "@/domain/entities/subscription.entity";
 import ISubsite from "@/domain/entities/subsite.entity";
 import ITicket from "@/domain/entities/ticket.entity";
 import IUser from "@/domain/entities/user.entity";
-import IUserActivity from "@/domain/entities/useractivity.entity";
+import IUserActivity from "@/domain/entities/userActivity.entity";
 import IVendor from "@/domain/entities/vendor.entity";
 
 
 export interface AddressState {
     loading: boolean;
     error: string | null;
-    addresss: IAddress[];
+    addresses: IAddress[];
 }
 
 export interface AuditLogState {
@@ -48,10 +48,10 @@ export interface CartItemState {
     cartitems: ICartItem[];
 }
 
-export interface CategoryState {
+export interface categoriestate {
     loading: boolean;
     error: string | null;
-    categorys: ICategory[];
+    categories: ICategory[];
 }
 
 export interface NewsletterSubscriptionState {
@@ -129,7 +129,7 @@ export interface ShopState {
 export interface ShopSubscriptionState {
     loading: boolean;
     error: string | null;
-    shopsubscriptions: IShopSubscription[];
+    shopSubscriptions?: IShopSubscription[];
 }
 
 export interface SubscriptionState {
@@ -153,7 +153,7 @@ export interface TicketState {
 export interface UserState {
     loading: boolean;
     error: string | null;
-    user: IUser | null;
+    user?: IUser | null;
 }
 
 export interface VendorState {
@@ -162,8 +162,8 @@ export interface VendorState {
     vendors: IVendor[]
 }
 
-export interface UserActivityState {
-    loading:boolean;
+export interface userActivitiestate {
+    loading: boolean;
     error: string | null;
-    useractivitys : IUserActivity[]
+    userActivities: IUserActivity[]
 }

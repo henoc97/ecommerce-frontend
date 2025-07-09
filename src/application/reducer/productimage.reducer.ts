@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import IProductImage from "@/domain/entities/productimage.entity";
+import IProductImage from "@/domain/entities/productImage.entity";
 import { ProductImageState } from "../types/state.types";
 
 const initialState: ProductImageState = {

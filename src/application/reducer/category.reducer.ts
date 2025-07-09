@@ -1,51 +1,51 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import ICategory from "@/domain/entities/category.entity";
-import { CategoryState } from "../types/state.types";
+import { categoriestate } from "../types/state.types";
 
-const initialState: CategoryState = {
+const initialState: categoriestate = {
   loading: false,
   error: null,
-  categorys: [],
+  categories: [],
 };
 
-const categorySlice = createSlice({
-  name: "categorys",
+const categorieslice = createSlice({
+  name: "categories",
   initialState,
   reducers: {
-    fetchCategorysRequest(state) {
+    fetchcategoriesRequest(state) {
       state.loading = true;
       state.error = null;
     },
-    fetchCategorysSuccess(state, action: PayloadAction<ICategory[]>) {
+    fetchcategoriesSuccess(state, action: PayloadAction<ICategory[]>) {
       state.loading = false;
-      state.categorys = action.payload;
+      state.categories = action.payload;
     },
-    fetchCategorysFailure(state, action: PayloadAction<string>) {
+    fetchcategoriesFailure(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
     },
     addCategory(state, action: PayloadAction<ICategory>) {
-      state.categorys.push(action.payload);
+      state.categories.push(action.payload);
     },
     deleteCategory(state, action: PayloadAction<number>) {
-      state.categorys = state.categorys.filter((category) => category.id !== action.payload);
+      state.categories = state.categories.filter((category) => category.id !== action.payload);
     },
     updateCategory(state, action: PayloadAction<ICategory>) {
-      const index = state.categorys.findIndex((category) => category.id === action.payload.id);
+      const index = state.categories.findIndex((category) => category.id === action.payload.id);
       if (index !== -1) {
-        state.categorys[index] = action.payload;
+        state.categories[index] = action.payload;
       }
     },
   },
 });
 
 export const {
-  fetchCategorysRequest,
-  fetchCategorysSuccess,
-  fetchCategorysFailure,
+  fetchcategoriesRequest,
+  fetchcategoriesSuccess,
+  fetchcategoriesFailure,
   addCategory,
   deleteCategory,
   updateCategory
-} = categorySlice.actions;
+} = categorieslice.actions;
 
-export default categorySlice.reducer;
+export default categorieslice.reducer;

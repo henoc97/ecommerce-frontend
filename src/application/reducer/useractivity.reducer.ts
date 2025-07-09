@@ -1,51 +1,51 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import IUserActivity from "@/domain/entities/useractivity.entity";
-import { UserActivityState } from "../types/state.types";
+import IUserActivity from "@/domain/entities/userActivity.entity";
+import { userActivitiestate } from "../types/state.types";
 
-const initialState: UserActivityState = {
+const initialState: userActivitiestate = {
   loading: false,
   error: null,
-  useractivitys: [],
+  userActivities: [],
 };
 
-const useractivitySlice = createSlice({
-  name: "useractivitys",
+const userActivitieslice = createSlice({
+  name: "userActivities",
   initialState,
   reducers: {
-    fetchUserActivitysRequest(state) {
+    fetchuserActivitiesRequest(state) {
       state.loading = true;
       state.error = null;
     },
-    fetchUserActivitysSuccess(state, action: PayloadAction<IUserActivity[]>) {
+    fetchuserActivitiesSuccess(state, action: PayloadAction<IUserActivity[]>) {
       state.loading = false;
-      state.useractivitys = action.payload;
+      state.userActivities = action.payload;
     },
-    fetchUserActivitysFailure(state, action: PayloadAction<string>) {
+    fetchuserActivitiesFailure(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
     },
     addUserActivity(state, action: PayloadAction<IUserActivity>) {
-      state.useractivitys.push(action.payload);
+      state.userActivities.push(action.payload);
     },
     deleteUserActivity(state, action: PayloadAction<number>) {
-      state.useractivitys = state.useractivitys.filter((useractivity) => useractivity.id !== action.payload);
+      state.userActivities = state.userActivities.filter((useractivity) => useractivity.id !== action.payload);
     },
     updateUserActivity(state, action: PayloadAction<IUserActivity>) {
-      const index = state.useractivitys.findIndex((useractivity) => useractivity.id === action.payload.id);
+      const index = state.userActivities.findIndex((useractivity) => useractivity.id === action.payload.id);
       if (index !== -1) {
-        state.useractivitys[index] = action.payload;
+        state.userActivities[index] = action.payload;
       }
     },
   },
 });
 
 export const {
-  fetchUserActivitysRequest,
-  fetchUserActivitysSuccess,
-  fetchUserActivitysFailure,
+  fetchuserActivitiesRequest,
+  fetchuserActivitiesSuccess,
+  fetchuserActivitiesFailure,
   addUserActivity,
   deleteUserActivity,
   updateUserActivity
-} = useractivitySlice.actions;
+} = userActivitieslice.actions;
 
-export default useractivitySlice.reducer;
+export default userActivitieslice.reducer;

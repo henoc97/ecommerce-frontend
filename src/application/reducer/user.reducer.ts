@@ -4,7 +4,7 @@ import IUser from "@/domain/entities/user.entity";
 interface UserState {
   loading: boolean;
   error: string | null;
-  user: IUser | null;
+  user?: IUser | null;
 }
 
 const initialState: UserState = {

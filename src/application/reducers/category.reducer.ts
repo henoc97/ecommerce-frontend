@@ -25,12 +25,15 @@ const categorieslice = createSlice({
       state.error = action.payload;
     },
     addCategory(state, action: PayloadAction<ICategory>) {
+      state.loading = false;
       state.categories.push(action.payload);
     },
     deleteCategory(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.categories = state.categories.filter((category) => category.id !== action.payload);
     },
     updateCategory(state, action: PayloadAction<ICategory>) {
+      state.loading = false;
       const index = state.categories.findIndex((category) => category.id === action.payload.id);
       if (index !== -1) {
         state.categories[index] = action.payload;

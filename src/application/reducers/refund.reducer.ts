@@ -25,12 +25,15 @@ const refundSlice = createSlice({
       state.error = action.payload;
     },
     addRefund(state, action: PayloadAction<IRefund>) {
+      state.loading = false;
       state.refunds.push(action.payload);
     },
     deleteRefund(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.refunds = state.refunds.filter((refund) => refund.id !== action.payload);
     },
     updateRefund(state, action: PayloadAction<IRefund>) {
+      state.loading = false;
       const index = state.refunds.findIndex((refund) => refund.id === action.payload.id);
       if (index !== -1) {
         state.refunds[index] = action.payload;

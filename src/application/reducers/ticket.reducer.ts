@@ -25,12 +25,15 @@ const ticketSlice = createSlice({
       state.error = action.payload;
     },
     addTicket(state, action: PayloadAction<ITicket>) {
+      state.loading = false;
       state.tickets.push(action.payload);
     },
     deleteTicket(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.tickets = state.tickets.filter((ticket) => ticket.id !== action.payload);
     },
     updateTicket(state, action: PayloadAction<ITicket>) {
+      state.loading = false;
       const index = state.tickets.findIndex((ticket) => ticket.id === action.payload.id);
       if (index !== -1) {
         state.tickets[index] = action.payload;

@@ -25,12 +25,15 @@ const productimageSlice = createSlice({
       state.error = action.payload;
     },
     addProductImage(state, action: PayloadAction<IProductImage>) {
+      state.loading = false;
       state.productimages.push(action.payload);
     },
     deleteProductImage(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.productimages = state.productimages.filter((productimage) => productimage.id !== action.payload);
     },
     updateProductImage(state, action: PayloadAction<IProductImage>) {
+      state.loading = false;
       const index = state.productimages.findIndex((productimage) => productimage.id === action.payload.id);
       if (index !== -1) {
         state.productimages[index] = action.payload;

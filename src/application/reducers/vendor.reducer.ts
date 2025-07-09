@@ -25,12 +25,15 @@ const vendorSlice = createSlice({
       state.error = action.payload;
     },
     addVendor(state, action: PayloadAction<IVendor>) {
+      state.loading = false;
       state.vendors.push(action.payload);
     },
     deleteVendor(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.vendors = state.vendors.filter((vendors: { id: number; }) => vendors.id !== action.payload);
     },
     updateVendor(state, action: PayloadAction<IVendor>) {
+      state.loading = false;
       const index = state.vendors.findIndex((vendors: { id: number; }) => vendors.id === action.payload.id);
       if (index !== -1) {
         state.vendors[index] = action.payload;

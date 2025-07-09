@@ -25,12 +25,15 @@ const reviewSlice = createSlice({
       state.error = action.payload;
     },
     addReview(state, action: PayloadAction<IReview>) {
+      state.loading = false;
       state.reviews.push(action.payload);
     },
     deleteReview(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.reviews = state.reviews.filter((review) => review.id !== action.payload);
     },
     updateReview(state, action: PayloadAction<IReview>) {
+      state.loading = false;
       const index = state.reviews.findIndex((review) => review.id === action.payload.id);
       if (index !== -1) {
         state.reviews[index] = action.payload;

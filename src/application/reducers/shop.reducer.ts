@@ -25,12 +25,15 @@ const shopSlice = createSlice({
       state.error = action.payload;
     },
     addShop(state, action: PayloadAction<IShop>) {
+      state.loading = false;
       state.shops.push(action.payload);
     },
     deleteShop(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.shops = state.shops.filter((shop) => shop.id !== action.payload);
     },
     updateShop(state, action: PayloadAction<IShop>) {
+      state.loading = false;
       const index = state.shops.findIndex((shop) => shop.id === action.payload.id);
       if (index !== -1) {
         state.shops[index] = action.payload;

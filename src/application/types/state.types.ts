@@ -1,5 +1,5 @@
 import IAddress from "@/domain/entities/address.entity";
-import IAuditLog from "@/domain/entities/auditLog.entity";
+import IAuditLog from "@/domain/entities/auditlog.entity";
 import ICart from "@/domain/entities/cart.entity";
 import ICartItem from "@/domain/entities/cartItem.entity";
 import ICategory from "@/domain/entities/category.entity";
@@ -20,7 +20,7 @@ import ISubscription from "@/domain/entities/subscription.entity";
 import ISubsite from "@/domain/entities/subsite.entity";
 import ITicket from "@/domain/entities/ticket.entity";
 import IUser from "@/domain/entities/user.entity";
-import IUserActivity from "@/domain/entities/userActivity.entity";
+import IUserActivity from "@/domain/entities/useractivity.entity";
 import IVendor from "@/domain/entities/vendor.entity";
 
 
@@ -129,7 +129,7 @@ export interface ShopState {
 export interface ShopSubscriptionState {
     loading: boolean;
     error: string | null;
-    shopSubscriptions?: IShopSubscription[];
+    shopSubscriptions: IShopSubscription[];
 }
 
 export interface SubscriptionState {

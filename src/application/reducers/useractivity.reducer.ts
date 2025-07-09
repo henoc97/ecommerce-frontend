@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import IUserActivity from "@/domain/entities/userActivity.entity";
+import IUserActivity from "@/domain/entities/useractivity.entity";
 import { userActivitiestate } from "../types/state.types";
 
 const initialState: userActivitiestate = {
@@ -25,12 +25,15 @@ const userActivitieslice = createSlice({
       state.error = action.payload;
     },
     addUserActivity(state, action: PayloadAction<IUserActivity>) {
+      state.loading = false;
       state.userActivities.push(action.payload);
     },
     deleteUserActivity(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.userActivities = state.userActivities.filter((useractivity) => useractivity.id !== action.payload);
     },
     updateUserActivity(state, action: PayloadAction<IUserActivity>) {
+      state.loading = false;
       const index = state.userActivities.findIndex((useractivity) => useractivity.id === action.payload.id);
       if (index !== -1) {
         state.userActivities[index] = action.payload;

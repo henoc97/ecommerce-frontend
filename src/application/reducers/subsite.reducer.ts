@@ -25,12 +25,15 @@ const subsiteSlice = createSlice({
       state.error = action.payload;
     },
     addSubsite(state, action: PayloadAction<ISubsite>) {
+      state.loading = false;
       state.subsites.push(action.payload);
     },
     deleteSubsite(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.subsites = state.subsites.filter((subsite) => subsite.id !== action.payload);
     },
     updateSubsite(state, action: PayloadAction<ISubsite>) {
+      state.loading = false;
       const index = state.subsites.findIndex((subsite) => subsite.id === action.payload.id);
       if (index !== -1) {
         state.subsites[index] = action.payload;

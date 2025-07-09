@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import IAuditLog from "@/domain/entities/auditLog.entity";
+import IAuditLog from "@/domain/entities/auditlog.entity";
 import { AuditLogState } from "../types/state.types";
 
 const initialState: AuditLogState = {
@@ -25,12 +25,15 @@ const auditlogSlice = createSlice({
       state.error = action.payload;
     },
     addAuditLog(state, action: PayloadAction<IAuditLog>) {
+      state.loading = false;
       state.auditlogs.push(action.payload);
     },
     deleteAuditLog(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.auditlogs = state.auditlogs.filter((auditlog) => auditlog.id !== action.payload);
     },
     updateAuditLog(state, action: PayloadAction<IAuditLog>) {
+      state.loading = false;
       const index = state.auditlogs.findIndex((auditlog) => auditlog.id === action.payload.id);
       if (index !== -1) {
         state.auditlogs[index] = action.payload;

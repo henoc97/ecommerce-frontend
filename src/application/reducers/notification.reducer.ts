@@ -25,12 +25,15 @@ const notificationSlice = createSlice({
       state.error = action.payload;
     },
     addNotification(state, action: PayloadAction<any>) {
+      state.loading = false;
       state.notifications.push(action.payload);
     },
     deleteNotification(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.notifications = state.notifications.filter((notification) => notification.id !== action.payload);
     },
     updateNotification(state, action: PayloadAction<INotification>) {
+      state.loading = false;
       const index = state.notifications.findIndex((notification) => notification.id === action.payload.id);
       if (index !== -1) {
         state.notifications[index] = action.payload;

@@ -25,12 +25,15 @@ const productvariantSlice = createSlice({
       state.error = action.payload;
     },
     addProductVariant(state, action: PayloadAction<IProductVariant>) {
+      state.loading = false;
       state.productvariants.push(action.payload);
     },
     deleteProductVariant(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.productvariants = state.productvariants.filter((productvariant) => productvariant.id !== action.payload);
     },
     updateProductVariant(state, action: PayloadAction<IProductVariant>) {
+      state.loading = false;
       const index = state.productvariants.findIndex((productvariant) => productvariant.id === action.payload.id);
       if (index !== -1) {
         state.productvariants[index] = action.payload;

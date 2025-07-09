@@ -25,12 +25,15 @@ const orderSlice = createSlice({
       state.error = action.payload;
     },
     addOrder(state, action: PayloadAction<IOrder>) {
+      state.loading = false;
       state.orders.push(action.payload);
     },
     deleteOrder(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.orders = state.orders.filter((order) => order.id !== action.payload);
     },
     updateOrder(state, action: PayloadAction<IOrder>) {
+      state.loading = false;
       const index = state.orders.findIndex((order) => order.id === action.payload.id);
       if (index !== -1) {
         state.orders[index] = action.payload;

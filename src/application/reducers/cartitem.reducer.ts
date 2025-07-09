@@ -25,12 +25,15 @@ const cartitemSlice = createSlice({
       state.error = action.payload;
     },
     addCartItem(state, action: PayloadAction<ICartItem>) {
+      state.loading = false;
       state.cartitems.push(action.payload);
     },
     deleteCartItem(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.cartitems = state.cartitems.filter((cartitem) => cartitem.id !== action.payload);
     },
     updateCartItem(state, action: PayloadAction<ICartItem>) {
+      state.loading = false;
       const index = state.cartitems.findIndex((cartitem) => cartitem.id === action.payload.id);
       if (index !== -1) {
         state.cartitems[index] = action.payload;

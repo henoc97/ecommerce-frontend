@@ -25,12 +25,15 @@ const orderitemSlice = createSlice({
       state.error = action.payload;
     },
     addOrderItem(state, action: PayloadAction<IOrderItem>) {
+      state.loading = false;
       state.orderitems.push(action.payload);
     },
     deleteOrderItem(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.orderitems = state.orderitems.filter((orderitem) => orderitem.id !== action.payload);
     },
     updateOrderItem(state, action: PayloadAction<IOrderItem>) {
+      state.loading = false;
       const index = state.orderitems.findIndex((orderitem) => orderitem.id === action.payload.id);
       if (index !== -1) {
         state.orderitems[index] = action.payload;

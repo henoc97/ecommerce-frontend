@@ -25,12 +25,15 @@ const addressSlice = createSlice({
       state.error = action.payload;
     },
     addAddress(state, action: PayloadAction<IAddress>) {
+      state.loading = false;
       state.addresses.push(action.payload);
     },
     deleteAddress(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.addresses = state.addresses.filter((address) => address.id !== action.payload);
     },
     updateAddress(state, action: PayloadAction<IAddress>) {
+      state.loading = false;
       const index = state.addresses.findIndex((address) => address.id === action.payload.id);
       if (index !== -1) {
         state.addresses[index] = action.payload;

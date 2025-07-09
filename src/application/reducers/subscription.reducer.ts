@@ -25,12 +25,15 @@ const subscriptionSlice = createSlice({
       state.error = action.payload;
     },
     addSubscription(state, action: PayloadAction<ISubscription>) {
+      state.loading = false;
       state.subscriptions.push(action.payload);
     },
     deleteSubscription(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.subscriptions = state.subscriptions.filter((subscription) => subscription.id !== action.payload);
     },
     updateSubscription(state, action: PayloadAction<ISubscription>) {
+      state.loading = false;
       const index = state.subscriptions.findIndex((subscription) => subscription.id === action.payload.id);
       if (index !== -1) {
         state.subscriptions[index] = action.payload;

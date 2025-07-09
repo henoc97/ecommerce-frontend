@@ -25,12 +25,15 @@ const newslettersubscriptionSlice = createSlice({
       state.error = action.payload;
     },
     addNewsletterSubscription(state, action: PayloadAction<INewsletterSubscription>) {
+      state.loading = false;
       state.newslettersubscriptions.push(action.payload);
     },
     deleteNewsletterSubscription(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.newslettersubscriptions = state.newslettersubscriptions.filter((newslettersubscription) => newslettersubscription.id !== action.payload);
     },
     updateNewsletterSubscription(state, action: PayloadAction<INewsletterSubscription>) {
+      state.loading = false;
       const index = state.newslettersubscriptions.findIndex((newslettersubscription) => newslettersubscription.id === action.payload.id);
       if (index !== -1) {
         state.newslettersubscriptions[index] = action.payload;

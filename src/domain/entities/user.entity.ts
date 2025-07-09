@@ -1,12 +1,12 @@
 import { UserRole } from "../enums/UserRole.enum";
 import IAddress from "./address.entity";
-import IAuditLog from "./auditLog.entity";
+import IAuditLog from "./auditlog.entity";
 import ICart from "./cart.entity";
 import INotification from "./notification.entity";
 import IOrder from "./order.entity";
 import IReview from "./review.entity";
 import ITicket from "./ticket.entity";
-import IUserActivity from "./userActivity.entity";
+import IUserActivity from "./useractivity.entity";
 import IVendor from "./vendor.entity";
 
 export interface IUser {

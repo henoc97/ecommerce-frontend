@@ -25,12 +25,15 @@ const paymentSlice = createSlice({
       state.error = action.payload;
     },
     addPayment(state, action: PayloadAction<IPayment>) {
+      state.loading = false;
       state.payments.push(action.payload);
     },
     deletePayment(state, action: PayloadAction<number>) {
+      state.loading = false;
       state.payments = state.payments.filter((payment) => payment.id !== action.payload);
     },
     updatePayment(state, action: PayloadAction<IPayment>) {
+      state.loading = false;
       const index = state.payments.findIndex((payment) => payment.id === action.payload.id);
       if (index !== -1) {
         state.payments[index] = action.payload;
